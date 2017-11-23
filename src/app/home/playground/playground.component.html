@@ -1,3 +1,52 @@
-<p>
-  playground works!
-</p>
+<app-navbar></app-navbar>
+<img src="../../../assets/images/roulette.jpg" alt="roulette image" class="roulette-img">
+
+<div class="row" style="margin-top: 60px;">
+  <div class="col s3"></div>
+  <div class="input-field col s2">
+    <input type="number" name="firstTwelve" class="validate" [(ngModel)]="firstTwelve" step="500">
+    <label>1st 12</label>
+  </div>
+  <div class="input-field col s2">
+    <input type="number" name="secondTwelve" class="validate" [(ngModel)]="secondTwelve" step="500">
+    <label>2nd 12</label>
+  </div>
+  <div class="input-field col s2">
+    <input type="number" name="thirdTwelve" class="validate" [(ngModel)]="thirdTwelve" step="500">
+    <label>3rd 12</label>
+  </div>
+  <div class="col s3"></div>
+</div>
+<div class="row">
+  <div class="col s3"></div>
+  <div class="input-field col s2">
+    <input type="number" name="zero" class="validate" [(ngModel)]="zero" step="500">
+    <label>Zero</label>
+  </div>
+  <div class="input-field col s2">
+    <input type="number" name="oneToEighteen" class="validate" [(ngModel)]="oneToEighteen" step="500">
+    <label>1 to 18</label>
+  </div>
+  <div class="input-field col s2">
+    <input type="number" name="firstTwelve" class="validate" [(ngModel)]="ninteenToThirtySix" step="500">
+    <label>19-36</label>
+  </div>
+  <div class="col s3"></div>
+</div>
+<div class="row">
+  <div class="col s3"></div>
+  <div class="input-field col s2">
+    <input type="number" name="firstTwelve" class="validate" [(ngModel)]="odd" step="500">
+    <label>Odd</label>
+  </div>
+  <div class="input-field col s2">
+    <input type="number" name="even" class="validate" [(ngModel)]="even" step="500">
+    <label>Even</label>
+  </div>
+  <div class="col s2">
+    <a class="waves-effect waves-light btn">Reset</a>
+  </div>
+  <div class="col s3"></div>
+</div>
+
+<app-footer></app-footer>

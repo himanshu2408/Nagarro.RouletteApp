@@ -8,6 +8,8 @@ import {RouterModule} from '@angular/router';
 import {FormsModule} from '@angular/forms';
 import { PlaygroundComponent } from './home/playground/playground.component';
 import { NotFoundComponent } from './home/not-found/not-found.component';
+import { FooterComponent } from './home/footer/footer.component';
+import { NavbarComponent } from './home/navbar/navbar.component';
 
 const approutes = [
   {path: '', component: HomeComponent, children: [
@@ -24,7 +26,9 @@ const approutes = [
     HomeComponent,
     LoginComponent,
     PlaygroundComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    FooterComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
