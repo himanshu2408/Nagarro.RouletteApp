@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {RoulettePlayerService} from '../../roulette-player.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -7,9 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor() { }
+  constructor(protected roulettePlayer: RoulettePlayerService, private router: Router) { }
 
   ngOnInit() {
   }
-
+  logout() {
+    this.roulettePlayer.logout()
+    this.router.navigate(['']);
+  }
 }

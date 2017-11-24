@@ -10,6 +10,8 @@ import { PlaygroundComponent } from './home/playground/playground.component';
 import { NotFoundComponent } from './home/not-found/not-found.component';
 import { FooterComponent } from './home/footer/footer.component';
 import { NavbarComponent } from './home/navbar/navbar.component';
+import {RoulettePlayerService} from './roulette-player.service';
+import {HttpModule} from '@angular/http';
 
 const approutes = [
   {path: '', component: HomeComponent, children: [
@@ -33,9 +35,10 @@ const approutes = [
   imports: [
     BrowserModule,
     FormsModule,
+    HttpModule,
     RouterModule.forRoot(approutes)
   ],
-  providers: [],
+  providers: [RoulettePlayerService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

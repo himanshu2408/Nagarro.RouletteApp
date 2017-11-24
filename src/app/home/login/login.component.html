@@ -1,3 +1,7 @@
 <p>
   login works!
 </p>
+<div *ngIf="showError" style="color: darkred;">ERROR!!! please enter a valid id.</div>
+<input #uniqueId type="text">
+<button (click)="login(uniqueId.value)">play</button>
+<a class="waves-effect waves-light btn center" href="/play">Play now</a>

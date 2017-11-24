@@ -1,3 +1,11 @@
-<p>
-  navbar works!
-</p>
+<div class="navbar-fixed">
+  <nav class="teal">
+    <div class="nav-wrapper">
+      <a href="#!" class="brand-logo">Roulette</a>
+      <ul class="right hide-on-med-and-down" *ngIf="roulettePlayer.isLoggedIn()">
+        <li>Welcome {{roulettePlayer.loggedInUser['Name']}}, Balance: Rs. {{roulettePlayer.loggedInUser['AccountBalance']}}&nbsp;&nbsp;&nbsp;&nbsp;</li>
+        <li><a (click)="logout()">Logout</a></li>
+      </ul>
+    </div>
+  </nav>
+</div>
