@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {RoulettePlayerService} from '../../roulette-player.service';
-import {Router} from "@angular/router";
-import {uniqueByName} from "@angular/language-service/src/utils";
-import {log} from "util";
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-login',
