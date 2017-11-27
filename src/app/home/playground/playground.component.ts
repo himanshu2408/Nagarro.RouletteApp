@@ -13,14 +13,6 @@ export class PlaygroundComponent implements OnInit {
   bets: Array<number>;
   betAmount: number;
   winFactor: number;
-  firstTwelve: number = 0;
-  secondTwelve: number = 0;
-  thirdTwelve: number = 0;
-  zero: number = 0;
-  oneToEighteen: number = 0;
-  nineteenToThirtySix: number = 0;
-  even: number = 0;
-  odd: number = 0;
   constructor(private router: Router, private rouletteService: RoulettePlayerService) {
     this.initializeVariables();
   }
@@ -41,10 +33,12 @@ export class PlaygroundComponent implements OnInit {
     this.winFactor = 0;
   }
   noNegativeBets(): boolean {
-    return (this.firstTwelve >= 0 && this.secondTwelve >= 0
-            && this.thirdTwelve >= 0 && this.zero >= 0
-            && this.oneToEighteen >= 0 && this.nineteenToThirtySix >= 0
-            && this.even >= 0 && this.odd >= 0);
+    this.bets.forEach((bet) => {
+      if (bet < 0) {
+        return false;
+      }
+    });
+    return true;
   }
   noOfValidBets(): number {
     let noOfBets = 0;
@@ -68,28 +62,32 @@ export class PlaygroundComponent implements OnInit {
     return noOfBets;
   }
   play() {
-    this.rouletteService.login(this.rouletteService.loggedInUser['CasinoId']);
-    const validBets = this.noOfValidBets();
-    if (this.betAmount > this.rouletteService.loggedInUser['AccountBalance']) {
-      alert('You dont have enough balance. Please Recharge.');
-    } else if (!this.noNegativeBets()) {
-      alert('you cannot enter negative amount.');
-    } else if (validBets === 0) {
-      alert('you must bet on a tier before start playing.');
-    } else if (validBets > 1) {
-      alert('you can only bet on one tier.');
-    } else if (!(this.betAmount % 500 === 0)) {
-      alert('Bet should be multiple of 500.');
-    } else if (validBets === 1) {
-      console.log('bet amount: ', this.betAmount, 'winfactor: ', this.winFactor);
-      if (Math.random() < 0.5) {
-        alert(`YOU WON ${this.betAmount * this.winFactor}!!! Hurrayyyyy...!`);
-        this.rouletteService.updateAmount(this.betAmount * this.winFactor, true);
-      } else {
-        alert(`YOU LOST ${this.betAmount}!!! Please try again!`);
-        this.rouletteService.updateAmount(this.betAmount, false);
+    const wantToPlay = confirm(`Are you sure you want to try your luck with your current selection?`);
+    if (wantToPlay) {
+      this.rouletteService.login(this.rouletteService.loggedInUser['CasinoId']);
+      const validBets = this.noOfValidBets();
+      if (this.betAmount > this.rouletteService.loggedInUser['AccountBalance']) {
+        alert(`Sorry ${this.rouletteService.loggedInUser['Name']} \n\n You have insufficient balance for your selections...`);
+      } else if (this.noNegativeBets()) {
+        alert('you cannot enter negative amount.');
+      } else if (validBets === 0) {
+        alert('you must bet on a tier before start playing.');
+      } else if (validBets > 1) {
+        alert('you can only bet on one tier.');
+      } else if (!(this.betAmount % 500 === 0)) {
+        alert('Bet should be multiple of 500.');
+      } else if (validBets === 1) {
+        //console.log('bet amount: ', this.betAmount, 'winfactor: ', this.winFactor);
+        const counter = Math.random();
+        if (counter < 0.5) {
+          alert(`The Roulette Result is: ${counter} \n\n YOU WON Rs. ${this.betAmount * this.winFactor}!!!`);
+          this.rouletteService.updateAmount((this.betAmount * this.winFactor) - this.betAmount, true);
+        } else {
+          alert(`The Roulette Result is: ${counter} \n\n YOU LOST Rs. ${this.betAmount}!!! Please try again!`);
+          this.rouletteService.updateAmount(this.betAmount, false);
+        }
       }
+      this.initializeVariables();
     }
-    this.initializeVariables();
   }
 }

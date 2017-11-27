@@ -3,14 +3,14 @@
   <div class="col s6">
     <form class="col s12 form">
       <div class="row">
+        <div *ngIf="showError" style="color: darkred;">ERROR!!! please enter a valid id.</div>
         <div class="input-field col s9">
-          <input placeholder="Enter UniqueID here" #uniqueId type="text" class="validate">
+          <input placeholder="Enter UniqueID here" #uniqueId type="text" class="validate" minlength="4">
           <label>Unique Id</label>
         </div>
         <div class="input-field col s3">
           <a class="waves-effect waves-light btn center" (click)="login(uniqueId.value)">Play now</a>
         </div>
-        <div *ngIf="showError" style="color: darkred;">ERROR!!! please enter a valid id.</div>
       </div>
     </form>
   </div>
