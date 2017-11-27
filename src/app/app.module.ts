@@ -8,7 +8,6 @@ import {RouterModule} from '@angular/router';
 import {FormsModule} from '@angular/forms';
 import { PlaygroundComponent } from './home/playground/playground.component';
 import { NotFoundComponent } from './home/not-found/not-found.component';
-import { FooterComponent } from './home/footer/footer.component';
 import { NavbarComponent } from './home/navbar/navbar.component';
 import {RoulettePlayerService} from './roulette-player.service';
 import {HttpModule} from '@angular/http';
@@ -29,7 +28,6 @@ const approutes = [
     LoginComponent,
     PlaygroundComponent,
     NotFoundComponent,
-    FooterComponent,
     NavbarComponent
   ],
   imports: [

@@ -13,7 +13,6 @@ export class RoulettePlayerService {
   loggedInUser: Object;
   constructor(private http: Http) { }
   login(uniqueId) {
-    console.log('from service: ', uniqueId);
     this.http.get(`${baseURL}GetRoulettePlayer?id=${uniqueId}`)
       .map(res => res.json())
       .subscribe((user) => {
